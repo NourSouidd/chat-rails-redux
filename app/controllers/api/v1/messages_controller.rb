@@ -1,16 +1,17 @@
 class Api::V1::MessagesController < ApplicationController
   before_action :find_channel_name
+
   def index
-   messages = Message.order(created_at: :desc)
+   messages = @channel.messages.order(created_at: :asc)
    render json: messages
   end
 
   def create
   end
 
-  # private
+  private
 
   def find_channel_name
-    channel = Channel.find_by(name: params[:id])
+    @channel = Channel.find_by(name: params[:channel_id])
   end
 end
