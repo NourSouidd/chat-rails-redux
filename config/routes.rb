@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   end
 
   resources :channels, only: [ :show ]
-  # root to: 'channels#show'
-  root to: 'pages#home'
+  root to: 'channels#show'
+  # root to: 'pages#home'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
