@@ -7,6 +7,11 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   def create
+    message = @channel.message.new(content: params[:content])
+    message.user = current_user
+    message.save
+    render json: message
+
   end
 
   private
@@ -14,4 +19,5 @@ class Api::V1::MessagesController < ApplicationController
   def find_channel_name
     @channel = Channel.find_by(name: params[:channel_id])
   end
+
 end
